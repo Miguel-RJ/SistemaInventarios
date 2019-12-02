@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SistemaInventarios.Models.AppDBContext.Articulo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreArt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadArt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionArt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreArt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadArt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionArt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdArticulo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdArticulo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdArticulo })
+        </td>
+    </tr>
+}
+
+</table>

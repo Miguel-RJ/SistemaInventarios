@@ -1,0 +1,17 @@
+﻿@model SistemaInventarios.Models.Usuarios
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Model.IdUser == null)
+    {
+        <h2> Inicia Sesion para acceder al Control de Inventarios</h2>
+        <h2>@Html.ActionLink("Iniciar Sesion", "LogIn", "LogIn", null, null)</h2>
+    }
+    else
+    {
+        <h2> Hola @Model.Nombre </h2>
+    }
+}
+
+
