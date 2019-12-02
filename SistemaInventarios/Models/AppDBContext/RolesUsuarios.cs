@@ -6,12 +6,12 @@ namespace SistemaInventarios.Models.AppDBContext
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class RolesUsuario
+    public partial class RolesUsuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RolesUsuario()
+        public RolesUsuarios()
         {
-            Usuarios = new HashSet<Usuario>();
+            Usuarios = new HashSet<Usuarios>();
         }
 
         [Key]
@@ -22,6 +22,6 @@ namespace SistemaInventarios.Models.AppDBContext
         public string NombreRol { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

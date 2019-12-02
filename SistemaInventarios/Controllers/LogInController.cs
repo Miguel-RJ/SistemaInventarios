@@ -17,7 +17,7 @@ namespace SistemaInventarios.Controllers
         {
             return View();
         }
-        public ActionResult Verify(Usuarios user)
+        public ActionResult Verify(Usuario user)
         {
             var Busqueda = db.Usuarios.Where(x => x.IdUser == user.IdUser && x.Pass == user.Pass).FirstOrDefault();
             if (Busqueda is null)
@@ -26,10 +26,10 @@ namespace SistemaInventarios.Controllers
             }
             else
             {
-                user.Nombre = Busqueda.Nombre;
-                user.IdRol = Busqueda.IdRol;
-                user.Palabra = Busqueda.Palabra;
-                return RedirectToAction("Index", "Index", user);
+                Busqueda.Sesion = true;
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Index", null);
             }
         }
     }

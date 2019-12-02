@@ -1,25 +1,25 @@
-﻿@model IEnumerable<SistemaInventarios.Models.AppDBContext.Articulo>
+﻿@model IEnumerable<SistemaInventarios.Models.AppDBContext.Articulos>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Artículos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar Artículo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NombreArt)
+            @Html.DisplayName("Nombre")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CantidadArt)
+            @Html.DisplayName("Cantidad")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DescripcionArt)
+            @Html.DisplayName("Descripción")
         </th>
         <th></th>
     </tr>
@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.DescripcionArt)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdArticulo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdArticulo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdArticulo })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdArticulo }) |
+            @Html.ActionLink("Ver más", "Details", new { id=item.IdArticulo }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdArticulo })
         </td>
     </tr>
 }

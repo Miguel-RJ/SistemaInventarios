@@ -6,8 +6,7 @@ namespace SistemaInventarios.Models.AppDBContext
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Articulos")]
-    public partial class Articulo
+    public partial class Articulos
     {
         [Key]
         public int IdArticulo { get; set; }

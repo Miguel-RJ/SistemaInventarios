@@ -129,7 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ArticuloesController.cs" />
+    <Compile Include="Controllers\ArticulosController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -137,11 +137,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AppDBContext\AppDBContext.cs" />
-    <Compile Include="Models\AppDBContext\Articulo.cs" />
-    <Compile Include="Models\AppDBContext\RolesUsuario.cs" />
-    <Compile Include="Models\AppDBContext\Usuario.cs" />
+    <Compile Include="Models\AppDBContext\Articulos.cs" />
+    <Compile Include="Models\AppDBContext\RolesUsuarios.cs" />
+    <Compile Include="Models\AppDBContext\Usuarios.cs" />
     <Compile Include="Models\Articulo.cs" />
-    <Compile Include="Models\Usuarios.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,11 +156,11 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Articuloes\Create.cshtml" />
-    <Content Include="Views\Articuloes\Delete.cshtml" />
-    <Content Include="Views\Articuloes\Details.cshtml" />
-    <Content Include="Views\Articuloes\Edit.cshtml" />
-    <Content Include="Views\Articuloes\Index.cshtml" />
+    <Content Include="Views\Articulos\Create.cshtml" />
+    <Content Include="Views\Articulos\Delete.cshtml" />
+    <Content Include="Views\Articulos\Details.cshtml" />
+    <Content Include="Views\Articulos\Edit.cshtml" />
+    <Content Include="Views\Articulos\Index.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Usuarios\Delete.cshtml" />
     <Content Include="Views\Usuarios\Details.cshtml" />

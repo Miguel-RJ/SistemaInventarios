@@ -1,4 +1,4 @@
-﻿@model SistemaInventarios.Models.AppDBContext.Usuario
+﻿@model SistemaInventarios.Models.AppDBContext.Usuarios
 
 @{
     ViewBag.Title = "Details";
@@ -8,27 +8,19 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Usuario</h4>
+    <h4>Usuarios</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.RolesUsuario.NombreRol)
+            @Html.DisplayName("Rol de usuario:")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RolesUsuario.NombreRol)
+            @Html.DisplayFor(model => model.RolesUsuarios.NombreRol)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Pass)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pass)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayName("Nombre:")
         </dt>
 
         <dd>
@@ -36,16 +28,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Palabra)
+            @Html.DisplayName("Palabra:")
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Palabra)
         </dd>
 
+        <dt>
+            @Html.DisplayName("Sesión:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sesion)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdUser }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdUser }) |
+    @Html.ActionLink("Regresar a Usuarios", "Index")
 </p>

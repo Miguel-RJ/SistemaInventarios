@@ -11,5 +11,6 @@ namespace SistemaInventarios.Models
         public string NombreArt { get; set; }
         public int CantidadArt { get; set; }
         public string DescripcionArt { get; set; }
+        public bool Sesion { get; set; }
     }
 }

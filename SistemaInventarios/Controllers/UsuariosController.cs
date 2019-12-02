@@ -17,96 +17,182 @@ namespace SistemaInventarios.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
-            var usuarios = db.Usuarios.Include(u => u.RolesUsuario);
-            return View(usuarios.ToList());
+            Response.AppendHeader("Cache-Control", "no-store");
+            var SesionIniciadaAdmin = db.Usuarios.Where(x => x.Sesion == true && x.IdRol == "A").ToList();
+            if (SesionIniciadaAdmin.Count() > 0)
+            {
+                var usuarios = db.Usuarios.Include(u => u.RolesUsuarios);
+                return View(usuarios.ToList());
+            }
+            else
+            {
+                var SesionIniciada = db.Usuarios.Where(x => x.Sesion == true).ToList();
+                if (SesionIniciada.Count > 0)
+                {
+                    return RedirectToAction("Index", "Index", null);
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "LogIn", null);
+                }
+            }
         }
 
         // GET: Usuarios/Details/5
         public ActionResult Details(string id)
         {
-            if (id == null)
+            Response.AppendHeader("Cache-Control", "no-store");
+            var SesionIniciadaAdmin = db.Usuarios.Where(x => x.Sesion == true && x.IdRol == "A").ToList();
+            if (SesionIniciadaAdmin.Count() > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Usuarios usuarios = db.Usuarios.Find(id);
+                if (usuarios == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(usuarios);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            else
             {
-                return HttpNotFound();
+                var SesionIniciada = db.Usuarios.Where(x => x.Sesion == true).ToList();
+                if (SesionIniciada.Count > 0)
+                {
+                    return RedirectToAction("Index", "Index", null);
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "LogIn", null);
+                }
             }
-            return View(usuario);
         }
 
         // GET: Usuarios/Create
         public ActionResult Create()
         {
-            ViewBag.IdRol = new SelectList(db.RolesUsuarios, "IdRol", "NombreRol");
-            return View();
+            Response.AppendHeader("Cache-Control", "no-store");
+            var SesionIniciadaAdmin = db.Usuarios.Where(x => x.Sesion == true && x.IdRol == "A").ToList();
+            if (SesionIniciadaAdmin.Count() > 0)
+            {
+                ViewBag.IdRol = new SelectList(db.RolesUsuarios, "IdRol", "NombreRol");
+                return View();
+            }
+            else
+            {
+                var SesionIniciada = db.Usuarios.Where(x => x.Sesion == true).ToList();
+                if (SesionIniciada.Count > 0)
+                {
+                    return RedirectToAction("Index", "Index", null);
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "LogIn", null);
+                }
+            }
         }
 
         // POST: Usuarios/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdUser,Pass,Nombre,IdRol,Palabra")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "IdUser,Pass,Nombre,IdRol,Palabra,Sesion")] Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                usuarios.Sesion = false;
+                db.Usuarios.Add(usuarios);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdRol = new SelectList(db.RolesUsuarios, "IdRol", "NombreRol", usuario.IdRol);
-            return View(usuario);
+            ViewBag.IdRol = new SelectList(db.RolesUsuarios, "IdRol", "NombreRol", usuarios.IdRol);
+            return View(usuarios);
         }
 
         // GET: Usuarios/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
+            Response.AppendHeader("Cache-Control", "no-store");       
+            var SesionIniciadaAdmin = db.Usuarios.Where(x => x.Sesion == true && x.IdRol == "A").ToList();
+            if (SesionIniciadaAdmin.Count() > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Usuarios usuarios = db.Usuarios.Find(id);
+                if (usuarios == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.IdRol = new SelectList(db.RolesUsuarios, "IdRol", "NombreRol", usuarios.IdRol);
+                return View(usuarios);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            else
             {
-                return HttpNotFound();
+                var SesionIniciada = db.Usuarios.Where(x => x.Sesion == true).ToList();
+                if (SesionIniciada.Count > 0)
+                {
+                    return RedirectToAction("Index", "Index", null);
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "LogIn", null);
+                }
             }
-            ViewBag.IdRol = new SelectList(db.RolesUsuarios, "IdRol", "NombreRol", usuario.IdRol);
-            return View(usuario);
         }
 
         // POST: Usuarios/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdUser,Pass,Nombre,IdRol,Palabra")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "IdUser,Pass,Nombre,IdRol,Palabra,Sesion")] Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(usuarios).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdRol = new SelectList(db.RolesUsuarios, "IdRol", "NombreRol", usuario.IdRol);
-            return View(usuario);
+            ViewBag.IdRol = new SelectList(db.RolesUsuarios, "IdRol", "NombreRol", usuarios.IdRol);
+            return View(usuarios);
         }
 
         // GET: Usuarios/Delete/5
         public ActionResult Delete(string id)
         {
-            if (id == null)
+            Response.AppendHeader("Cache-Control", "no-store");
+            var SesionIniciadaAdmin = db.Usuarios.Where(x => x.Sesion == true && x.IdRol == "A").ToList();
+            if (SesionIniciadaAdmin.Count() > 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Usuarios usuarios = db.Usuarios.Find(id);
+                if (usuarios == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(usuarios);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            else
             {
-                return HttpNotFound();
+                var SesionIniciada = db.Usuarios.Where(x => x.Sesion == true).ToList();
+                if (SesionIniciada.Count > 0)
+                {
+                    return RedirectToAction("Index", "Index", null);
+                }
+                else
+                {
+                    return RedirectToAction("LogIn", "LogIn", null);
+                }
             }
-            return View(usuario);
         }
 
         // POST: Usuarios/Delete/5
@@ -114,8 +200,8 @@ namespace SistemaInventarios.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Usuarios usuarios = db.Usuarios.Find(id);
+            db.Usuarios.Remove(usuarios);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

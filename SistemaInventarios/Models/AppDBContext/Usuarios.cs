@@ -6,7 +6,7 @@ namespace SistemaInventarios.Models.AppDBContext
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Usuario
+    public partial class Usuarios
     {
         [Key]
         [StringLength(20)]
@@ -24,6 +24,8 @@ namespace SistemaInventarios.Models.AppDBContext
         [StringLength(30)]
         public string Palabra { get; set; }
 
-        public virtual RolesUsuario RolesUsuario { get; set; }
+        public bool? Sesion { get; set; }
+
+        public virtual RolesUsuarios RolesUsuarios { get; set; }
     }
 }

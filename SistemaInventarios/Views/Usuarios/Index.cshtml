@@ -1,50 +1,45 @@
-﻿@model IEnumerable<SistemaInventarios.Models.AppDBContext.Usuario>
+﻿@model IEnumerable<SistemaInventarios.Models.AppDBContext.Usuarios>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Usuarios</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo Usuario", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RolesUsuario.NombreRol)
+            @Html.DisplayName("Rol")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pass)
+            @Html.DisplayName("Id Usuario")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayName("Nombre")
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Palabra)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.RolesUsuario.NombreRol)
+            @Html.DisplayFor(modelItem => item.RolesUsuarios.NombreRol)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Pass)
+            @Html.DisplayFor(modelItem => item.IdUser)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Palabra)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdUser }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdUser }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdUser })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdUser }) |
+            @Html.ActionLink("Ver más", "Details", new { id=item.IdUser }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdUser })
         </td>
     </tr>
 }
