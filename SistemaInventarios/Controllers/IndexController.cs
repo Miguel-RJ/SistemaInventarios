@@ -14,7 +14,7 @@ namespace SistemaInventarios.Controllers
         AppDBContext db = new AppDBContext();
         // GET: Index
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string Mensaje)
         {
             var SesionIniciada = db.Usuarios.Where(x => x.Sesion == true).ToList();
             if (SesionIniciada.Count() > 0)
@@ -26,35 +26,13 @@ namespace SistemaInventarios.Controllers
                     IdUser = SesionIniciada.FirstOrDefault().IdUser
                 });
                 Response.AppendHeader("Cache-Control", "no-store");
+                ViewBag.Mensaje = Mensaje;
                 return View(user);
             }
             else
             {
                 return RedirectToAction("LogIn", "LogIn", null);
             }
-        }
-
-        public ActionResult LogOut()
-        {
-            var SesionIniciada = db.Usuarios.Where(x => x.Sesion == true).ToList();
-            foreach (var item in SesionIniciada)
-            {
-                item.Sesion = false;
-            }
-            db.SaveChanges();
-            Response.AppendHeader("Cache-Control", "no-store");
-
-            return RedirectToAction("LogIn","LogIn",null);
-        }
-
-        public ActionResult CRUDArticulos()
-        {
-            return View();
-        }
-
-        public ActionResult CRUDUsuarios()
-        {
-            return View();
         }
     }
 }

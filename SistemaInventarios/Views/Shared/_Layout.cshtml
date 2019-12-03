@@ -19,7 +19,7 @@
                 </button>
                 @Html.ActionLink("Artículos", "Index", "Articulos", null, new { @class = "navbar-brand" })
                 @Html.ActionLink("Usuarios", "Index", "Usuarios", null, new { @class = "navbar-brand" })
-                @Html.ActionLink("Cerrar Sesión", "LogOut", "Index", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("Cerrar Sesión", "LogOut", "LogIn", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -32,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Fundamentos de Ingeniería de Software</p>
         </footer>
     </div>
 

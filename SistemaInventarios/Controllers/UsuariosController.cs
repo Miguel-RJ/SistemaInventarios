@@ -29,7 +29,8 @@ namespace SistemaInventarios.Controllers
                 var SesionIniciada = db.Usuarios.Where(x => x.Sesion == true).ToList();
                 if (SesionIniciada.Count > 0)
                 {
-                    return RedirectToAction("Index", "Index", null);
+                    string msj = "Solo administradores puede ingresar al módulo Usuarios";
+                    return RedirectToAction("Index", "Index", new { Mensaje = msj });
                 }
                 else
                 {

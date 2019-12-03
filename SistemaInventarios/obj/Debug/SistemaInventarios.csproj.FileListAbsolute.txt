@@ -138,7 +138,7 @@ C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventa
 C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventarios\SistemaInventarios\bin\System.Web.Helpers.xml
 C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventarios\SistemaInventarios\bin\System.Web.Mvc.xml
 C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventarios\SistemaInventarios\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventarios\SistemaInventarios\obj\Debug\SistemaInventarios.csprojAssemblyReference.cache
 C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventarios\SistemaInventarios\obj\Debug\SistemaInventarios.csproj.CopyComplete
 C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventarios\SistemaInventarios\obj\Debug\SistemaInventarios.dll
 C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventarios\SistemaInventarios\obj\Debug\SistemaInventarios.pdb
+C:\Users\Desarrollo_Mike\source\repos\UPIICSA\SistemasInventarios\SistemaInventarios\SistemaInventarios\obj\Debug\SistemaInventarios.csprojAssemblyReference.cache
